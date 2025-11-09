@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>PDF変換サイト</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="stylesheet.css">
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1563.0.min.js"></script>
+    <script src="config.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-left">
+          <p>PDF変換サイト<span class="fa fa-file-pdf-o"></span></p>
+        </div>
+        <div class="header-right">
+          <label for="id">ID</label>
+              <input type="text" id="id" required><br><br>
+              <label for="password">PASSWORD</label>
+              <input type="password" id="password" required><br><br>
+              <button type="submit">送信</button>
+          </div>
+      </div>
+    </header>
+
+    <div class="top-wrapper">
+        <div class="container">
+          <h1>PDF変換静的サイト</h1>
+          <p>使用言語: HTML,CSS,JavaScript,Python</p>
+          <p>使用サービス: AWS</p>
+        </div>
+    </div>
+
+    <div class="middle-wrapper">
+      <div class="container">
+        <div class="functions">
+          <div class="jpg-to-pdf">
+            <form method="post" enctype="multipart/form-data">
+              <input type="file" id="jpg-upload" name="image-file" accept="image/png, image/jpeg" class="upload-btn" multiple disabled>
+              <label for="jpg-upload">
+                <img src="jpg-to-pdf.png" class="button-image" >
+              </label>
+            </form>
+            <p>↑をクリックで画像をアップロード</p>
+            <p>(対応形式:jpg,jpeg,png)</p>
+          </div>
+        </div>
+        <div class="file-name">
+          <ul id="file-list-selected"></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-wrapper">
+       <div class="container">
+        <div class="appload">
+          <ul id="file-list-apploaded"></ul>
+          <button id="upload-to-s3" class="s3-upload-btn" type="button" disabled>アップロード</button>
+          <button id="upload-trigger" class="s3-upload-btn" type="button" disabled>変換</button>
+          <button id="downloadBtn" disabled>ダウンロード</button>
+        </div> 
+    </div>
+
+    <footer>
+      <div class="container">
+        <p>
+          使用方法:<br>
+          1.上のボタンをクリックしてPDF化したい画像を選択<br>
+          2.「アップロード」をクリック<br>
+          3.「ファイル変換」をクリック<br>
+          4.「ダウンロード」をクリック<br><br>
+          注意:<br>
+          ページをリロードするとすべてリセットされます<br>
+
+        </p>
+      </div>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="file-select.js"></script>
+    <script src="s3.js"></script>
+    <script src="download.js"></script>
+  </body>
+</html>
